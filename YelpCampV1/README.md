@@ -1,2 +1,2 @@
 # YelpCamp
-This is a Node.js,Express,Mongo Application 
+This is the version that has no mongo dependcies. 
