@@ -37,19 +37,6 @@ app.use(bodyParser.urlencoded({
 }));
 app.set("view engine", "ejs");
 
-// var campgrounds = [{
-// 		name: "Salmon Creek",
-// 		image: "https://cdn.pixabay.com/photo/2019/10/02/16/56/landscape-4521413_1280.jpg"
-// 	},
-// 	{
-// 		name: "Granite Hill",
-// 		image: "https://cdn.pixabay.com/photo/2019/10/02/17/19/mountains-4521455_1280.jpg"
-// 	},
-// 	{
-// 		name: "Mountain Goat's Rest",
-// 		image: "https://cdn.pixabay.com/photo/2019/09/27/11/52/synchronization-4508329_1280.jpg"
-// 	}
-// ];
 
 app.get("/", function (req, res) {
 //Get landing page
@@ -58,7 +45,6 @@ app.get("/", function (req, res) {
 
 //INDEX  - show all campgrounds
 app.get("/campgrounds", function (req, res) {
-//res.render("campgrounds", {	campgrounds: campgrounds});
 // Get all campground from DB
 Campground.find({},function(err,allCampgrounds){
 	if(err){
@@ -78,7 +64,7 @@ app.post("/campgrounds", function (req, res) {
 		image: image,
 		description: desc
 	}
-	//Create a new campground and save to DB
+	//create a new campground and save to DB
 	Campground.create(newCampground, function(err,newlyCreated){
 		if(err){
 			console.log(err);
@@ -109,7 +95,7 @@ app.get("/campgrounds/:id", function(req,res){
 	//res.render("show");
 });
 
-app.listen(1011, function () {
+app.listen(process.env.PORT || 1011, function () {
 
 	console.log(" The Yelp Camp has started");
 }); 
