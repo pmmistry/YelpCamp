@@ -7,7 +7,7 @@ mongoose.set('useUnifiedTopology', true);
 // mongoose.connect("mongodb://localhost/yelp_camp", {
 // 	useNewUrlParser: true
 // });
-
+//
 var mongoconnect = process.env.MONGO || "mongodb://localhost/yelp_camp"; 
 mongoose.connect(mongoconnect, {
 	useNewUrlParser: true
