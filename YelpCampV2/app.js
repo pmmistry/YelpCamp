@@ -4,10 +4,15 @@ var express = require("express"),
 	bodyParser = require("body-parser");
 
 mongoose.set('useUnifiedTopology', true);
-mongoose.connect("mongodb://localhost/yelp_camp", {
-	useNewUrlParser: true
-});
+// mongoose.connect("mongodb://localhost/yelp_camp", {
+// 	useNewUrlParser: true
+// });
 
+var mongoconnect = process.env.MONGO || "mongodb://localhost/yelp_camp"; 
+mongoose.connect(mongoconnect, {
+	useNewUrlParser: true
+}).catch(err => console.log(err));
+ 
 //SCHEMA 
 var campgroundSchema = new mongoose.Schema({
 	name: String,
@@ -96,6 +101,5 @@ app.get("/campgrounds/:id", function(req,res){
 });
 
 app.listen(process.env.PORT || 1011, function () {
-
 	console.log(" The Yelp Camp has started");
 }); 
